@@ -214,98 +214,98 @@ def shuangji(driverChrome):
         if li.text =='下载':
             li.click()
     print("右击成功")
-
-
-  921  source env/bin/activate
-  923  pip install selenium
-  924  pip install --upgrade pip
-  925  pip install selenium
-  926  yum install xvfb
-
-  927  pip install pyvirtualdisplay
-  929  wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-  930  apt install ./google-chrome-stable_current_amd64.deb
-  931  yum install google-chrome
-  932  /etc/yum.repos.d/google-chrome.repo
-  933  vi /etc/yum.repos.d/google-chrome.repo
-  934  yum install google-chrome
-  935  yum install Xvfb
-  936  yum -install libXfont
-  937  pip install selenium
-  938  https://sites.google.com/a/chromium.org/chromedriver/home.
-  939  curl https://sites.google.com/a/chromium.org/chromedriver/home
-  940  wget https://chromedriver.storage.googleapis.com/75.0.3770.140/chromedriver_linux64.zip
-  941  vi seleniumdemo.py
-  942  ls
-  943  rm google-chrome-stable_current_amd64.deb  -rf
-  944  unzip chromedriver_linux64.zip
-  945  ls
-  946  vi seleniumdemo.py
-  947  python seleniumdemo.py
-  948  ls
-  949  vi seleniumdemo.py
-  950  python seleniumdemo.py
-  951  source /env/bin/activate
-  952  cd /
-  953  vi s.py
-  954  cat seleniumdemo.py
-  955  vi s.py
-  956  python s.py
-  957  yum install xdpyinfo
-  958  python s.py
-  959  ls
-  960  ll
-  961  chmod                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          chromedriver
-  962  chmod 777 chromedriver
-  963  ll
-  964  python s.py
-  965  vi s.py
-  966  python s.py
-  967  vi s.py
-  968  python s.py
-  969  vi s.py
-  970  python s.py
-  971  ls
-  972  cd env/
-  973  ls
-  974  vd bin
-  975  cd bin
-  976  ls
-  977  cp /
-  978  cp /chromedriver ./
-  979  ls
-  980  ll
-  981  python /s.py
-  982  vi /s.py
-  983  python /s.py
-  984  vi /s.py
-  985  python /s.py/
-  986  python /s.py
-  987  yum install chrome
-  988  yum
-  989  ls
-  990  yum
-  991  history
-  992  yum google-chrome
-  993  yum install google-chrome
-  994  ls
-  995  yum install google-chrome
-  996  yum remove google-chrome-unstable-77.0.3860.5-1.x86_64 already
-  997  yum search google
-  998  yum search google-chrome
-  999  cd /
- 1000  ls
- 1001  wget http://130.235.83.22/public/CentOS-7/x86_64/google.x86_64/google-chrome-beta-76.0.3809.36-1.x86_64.rpm
- 1002  ls
- 1003  rpm -i google-chrome-beta-76.0.3809.36-1.x86_64.rpm
- 1004  rm chromedriver -rf
- 1005  rm chromedriver_linux64.zip -rf
- 1006  wget https://chromedriver.storage.googleapis.com/index.html?path=76.0.3809.68/
- 1007  ls
- 1008  wget https://chromedriver.storage.googleapis.com/76.0.3809.68/chromedriver_linux64.zip
- 1009  ls
- 1010  unzip chromedriver_linux64.zip
- 1011  ls
- 1
-
- 1046   pip install pyvirtualdisplay
+ #
+ #
+ #  921  source env/bin/activate
+ #  923  pip install selenium
+ #  924  pip install --upgrade pip
+ #  925  pip install selenium
+ #  926  yum install xvfb
+ #
+ #  927  pip install pyvirtualdisplay
+ #  929  wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+ #  930  apt install ./google-chrome-stable_current_amd64.deb
+ #  931  yum install google-chrome
+ #  932  /etc/yum.repos.d/google-chrome.repo
+ #  933  vi /etc/yum.repos.d/google-chrome.repo
+ #  934  yum install google-chrome
+ #  935  yum install Xvfb
+ #  936  yum -install libXfont
+ #  937  pip install selenium
+ #  938  https://sites.google.com/a/chromium.org/chromedriver/home.
+ #  939  curl https://sites.google.com/a/chromium.org/chromedriver/home
+ #  940  wget https://chromedriver.storage.googleapis.com/75.0.3770.140/chromedriver_linux64.zip
+ #  941  vi seleniumdemo.py
+ #  942  ls
+ #  943  rm google-chrome-stable_current_amd64.deb  -rf
+ #  944  unzip chromedriver_linux64.zip
+ #  945  ls
+ #  946  vi seleniumdemo.py
+ #  947  python seleniumdemo.py
+ #  948  ls
+ #  949  vi seleniumdemo.py
+ #  950  python seleniumdemo.py
+ #  951  source /env/bin/activate
+ #  952  cd /
+ #  953  vi s.py
+ #  954  cat seleniumdemo.py
+ #  955  vi s.py
+ #  956  python s.py
+ #  957  yum install xdpyinfo
+ #  958  python s.py
+ #  959  ls
+ #  960  ll
+ #  961  chmod                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          chromedriver
+ #  962  chmod 777 chromedriver
+ #  963  ll
+ #  964  python s.py
+ #  965  vi s.py
+ #  966  python s.py
+ #  967  vi s.py
+ #  968  python s.py
+ #  969  vi s.py
+ #  970  python s.py
+ #  971  ls
+ #  972  cd env/
+ #  973  ls
+ #  974  vd bin
+ #  975  cd bin
+ #  976  ls
+ #  977  cp /
+ #  978  cp /chromedriver ./
+ #  979  ls
+ #  980  ll
+ #  981  python /s.py
+ #  982  vi /s.py
+ #  983  python /s.py
+ #  984  vi /s.py
+ #  985  python /s.py/
+ #  986  python /s.py
+ #  987  yum install chrome
+ #  988  yum
+ #  989  ls
+ #  990  yum
+ #  991  history
+ #  992  yum google-chrome
+ #  993  yum install google-chrome
+ #  994  ls
+ #  995  yum install google-chrome
+ #  996  yum remove google-chrome-unstable-77.0.3860.5-1.x86_64 already
+ #  997  yum search google
+ #  998  yum search google-chrome
+ #  999  cd /
+ # 1000  ls
+ # 1001  wget http://130.235.83.22/public/CentOS-7/x86_64/google.x86_64/google-chrome-beta-76.0.3809.36-1.x86_64.rpm
+ # 1002  ls
+ # 1003  rpm -i google-chrome-beta-76.0.3809.36-1.x86_64.rpm
+ # 1004  rm chromedriver -rf
+ # 1005  rm chromedriver_linux64.zip -rf
+ # 1006  wget https://chromedriver.storage.googleapis.com/index.html?path=76.0.3809.68/
+ # 1007  ls
+ # 1008  wget https://chromedriver.storage.googleapis.com/76.0.3809.68/chromedriver_linux64.zip
+ # 1009  ls
+ # 1010  unzip chromedriver_linux64.zip
+ # 1011  ls
+ # 1
+ #
+ # 1046   pip install pyvirtualdisplay
