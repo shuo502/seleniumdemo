@@ -40,6 +40,7 @@
 
 
 import os,random,re
+import  requests
 try:
     os.popen("killall Xvfb")
     os.popen("killall chromedriver")
@@ -145,16 +146,23 @@ chrome_options.add_argument('--disable-software-rasterizer')
 # chrome_options.add_argument( "user-agent=User-Agent,Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_8; en-us) AppleWebKit/534.50 (KHTML, like Gecko) Version/5.1 Safari/534.50")
 chrome_options.add_argument("user-agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36")
 
-
+import platform
 def main(urllist):
     try:
         display.start()
         display = Display(visible=0, size=(800, 600))
     except:
         pass
-    driver = webdriver.Chrome(chrome_options=chrome_options)
+    print( platform.system())
+    if "Windows" in platform.system():
+        driver = webdriver.Chrome(chrome_options=chrome_options)
+
+    else:
+        chrome_options.add_argument('--headless')  # 不显示界面 模式浏览器 浏览器不提供可视化页面. linux下如果系统不支持可视化不加这条会启动失败-
+        driver = webdriver.Chrome('/env/bin/chromedriver', chrome_options=chrome_options)
     # try:
     #     driver = webdriver.Chrome('/chromedriver',chrome_options=chrome_options)
+    #     driver = webdriver.Chrome('/env/bin/chromedriver',chrome_options=chrome_options)
     # except:
     #     driver = webdriver.Chrome(chrome_options=chrome_options)
 
@@ -193,7 +201,13 @@ def main(urllist):
         pass
 
 if __name__ == "__main__":
-    urllist=['http://t.tjdcd.com/','https://www.2345.com/?khd01']
+    urllist = ['http://t.tjdcd.com/', 'https://www.2345.com/?khd01']
+    import json
+    listd=json.loads(requests.get('http://virk.55555.work/url').text)
+    if 'url'in listd:
+        if len(listd['url'])>0:
+            urllist=listd['url']
+    print(urllist)
     main(urllist)
 
 
