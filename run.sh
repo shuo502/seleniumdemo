@@ -26,19 +26,26 @@ echo gpgcheck=1 >>/etc/yum.repos.d/google-chrome.repo
 echo gpgkey=https://dl.google.com/linux/linux_signing_key.pub >>/etc/yum.repos.d/google-chrome.repo
 yum -y  install google-chrome
 
+yum -y install git
+yum -y update nss curl
 git clone https://github.com/shuo502/seleniumdemo.git
+
 cd seleniumdemo
 
 source /env/bin/activate
 
 /env/bin/pip install --upgrade pip
 /env/bin/pip install selenium
+/env/bin/pip install requests
 /env/bin/pip install pyvirtualdisplay
-rpm -i ./seleniumdemo/google-chrome-beta-76.0.3809.36-1.x86_64.rpm
-unzip ./seleniumdemo/chromedriver_linux64.zip
+rpm -i ./google-chrome-beta-76.0.3809.36-1.x86_64.rpm
+yum -y install unzip
+unzip ./chromedriver_linux64.zip
 unzip ./seleniumdemo-master/chromedriver_linux64.zip
 rpm -i ./google-chrome-beta-76.0.3809.36-1.x86_64.rpm
 cp chromedriver /env/bin/
+cp chromedriver /
+
 
 
 

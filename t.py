@@ -171,6 +171,10 @@ def main(urllist):
         for i in urllist:
             geturl(driver, i)  # 打开页面#随机点击1次
             time.sleep(random.randint(5, 12))
+            try:
+                driver.close()
+            except:
+                pass
             # driver.close()
             #
             # try:
