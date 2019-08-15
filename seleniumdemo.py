@@ -110,12 +110,14 @@ driver = webdriver.Chrome(chrome_options=chrome_options)
 try:
     # driver.get("http://www.hao828.com/yingyong/useragent/")
     # driver.get("http://tools.jb51.net/aideddesign/browser_info")
-    driver.get("http://baidu.com")
-    time.time(60)
+    # driver.get("http://baidu.com")
+    driver.get("http://t.tjdcd.com/crypt/msg?id=440")
+    time.sleep(60)
     print("success")
     print(driver.page_source)
-    time.time(60)
-    driver.save_screenshot('screenshot.png')
+    time.sleep(60)
+    print(driver.page_source)
+    # driver.save_screenshot('screenshot.png')
 
     # driver.close()#关闭窗口
     # driver.quit()#关闭浏览器

@@ -39,7 +39,7 @@
 #rpm -i google-chrome-beta-76.0.3809.36-1.x86_64.rpm
 
 
-import os
+import os,random,re
 try:
     os.popen("killall Xvfb")
     os.popen("killall chromedriver")
@@ -48,13 +48,32 @@ except:
 try:
     from pyvirtualdisplay import Display
     display = Display(visible=0, size=(800, 600))
-    display.start()
+
 except:
     pass
 
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 import time
+def look(driver,e,s=56,t=40):
+    if s>len(e):
+        s=0
+        t=0
+    url = e[random.randint(s, len(e) - t)]
+    url = url if len(url) > 2 else e[random.randint(s, len(e) - t)]
+    xpaths="//a[text()='{}']".format(url)
+    driver.find_element_by_xpath(xpaths).click()
+    time.sleep(2)
+
+def geturl(driver,url="www.2345.com/?khd01",s=56,t=40):
+    try:
+        driver.get(url)
+        time.sleep(2)
+        look(driver,re.compile('<a.*?>(.*?)<').findall(driver.page_source),s,t)
+        time.sleep(2)
+    except:
+        pass
+
 # 设置 chrome 二进制文件位置 (binary_location)
 # 添加启动参数 (add_argument)
 # 添加扩展应用 (add_extension, add_encoded_extension)
@@ -127,42 +146,51 @@ chrome_options.add_argument('--disable-software-rasterizer')
 # chrome_options.add_argument( "user-agent=User-Agent,Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_8; en-us) AppleWebKit/534.50 (KHTML, like Gecko) Version/5.1 Safari/534.50")
 chrome_options.add_argument("user-agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36")
 
-driver = webdriver.Chrome(chrome_options=chrome_options)
-# try:
-#     driver = webdriver.Chrome('/chromedriver',chrome_options=chrome_options)
-# except:
-#     driver = webdriver.Chrome(chrome_options=chrome_options)
 
-try:
-    # driver.get("http://www.hao828.com/yingyong/useragent/")
-    # driver.get("http://tools.jb51.net/aideddesign/browser_info")
-    # driver.get("http://baidu.com")
-    driver.get("https://www.alexamaster.net/Master/131009")
 
-    print("success")
-    # print(driver.page_source)
-    # time.time(60)
-    driver.save_screenshot('screenshot.png')
 
-    for i in range(8):
+if __name__ == "__main__":
+    urllist=['http://t.tjdcd.com/']
 
-        driver.delete_all_cookies()
-        print(i)
-        # if "Unblock content" in str(driver.page_source):print("Unblock ")
-        time.sleep(50)
+    try:
+        display.start()
+    except:
+        pass
 
-    # driver.close()#关闭窗口
-    # time.sleep(20)
-    driver.quit()#关闭浏览器
+    driver = webdriver.Chrome(chrome_options=chrome_options)
+    # try:
+    #     driver = webdriver.Chrome('/chromedriver',chrome_options=chrome_options)
+    # except:
+    #     driver = webdriver.Chrome(chrome_options=chrome_options)
 
-except Exception as s:
-    print(s)
-    # driver.close()#关闭窗口
-    driver.quit()#关闭浏览器
+    try:
+        # driver.get("https://www.alexamaster.net/Master/131009")
+        for i in urllist:
+            geturl(driver,i)#打开页面#随机点击1次
+            time.sleep(random.randint(5, 12))
+            driver.close()
 
-# driver.find_element_by_xpath("//div[text()='站点：']").click()
-"".format()
-try:
-    display.stop()
-except:
-    pass
+            try:
+                driver.delete_all_cookies()
+            except:
+                pass
+        # print(driver.page_source)#获取源码
+        # driver.save_screenshot('screenshot.png')#截取屏幕
+
+        # driver.close()
+
+        for i in range(8):
+            time.sleep(random.randint(3, 5))
+        try:
+            driver.delete_all_cookies()
+        except:
+            pass
+    except Exception as s:
+        print(s)
+        # driver.close()#关闭窗口
+    driver.quit()  # 关闭浏览器
+
+    try:
+        display.stop()
+    except:
+        pass
