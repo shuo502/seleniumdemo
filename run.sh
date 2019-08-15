@@ -36,6 +36,8 @@ source /env/bin/activate
 /env/bin/pip install pyvirtualdisplay
 rpm -i ./seleniumdemo/google-chrome-beta-76.0.3809.36-1.x86_64.rpm
 unzip ./seleniumdemo/chromedriver_linux64.zip
+unzip ./seleniumdemo-master/chromedriver_linux64.zip
+rpm -i ./google-chrome-beta-76.0.3809.36-1.x86_64.rpm
 cp chromedriver /env/bin/
 
 
@@ -45,6 +47,19 @@ unzip cpulimit.zip
 cd cpulimit-master
 make
 sudo cp src/cpulimit /usr/bin
+cp src/cpulimit /usr/bin
 
 
-#!/bin/bashwhile true ; doid=`ps -ef | grep cpulimit | grep -v "grep" | awk '{print $10}' | tail -1`nid=`ps aux | awk '{ if ( $3 > 75 ) print $2 }' | head -1`if [ "${nid}" != "" ] && [ "${nid}" != "${id}" ] ; thencpulimit -p ${nid} -l 75 &echo "[`date`] CpuLimiter run for ${nid} `ps -ef | grep ${nid} | awk '{print $8}' | head -1`" >> /root/cpulimit-log.logfisleep 2done
+echo '#!/bin/bash' >limit.sh
+echo 'while true ; do'
+echo '  cpul=75'
+echo '  id=`ps -ef | grep cpulimit | grep -v "grep" | awk '{print $10}' | tail -1`' >>limit.sh
+echo '  nid=`ps aux | awk '{ if ( $3 > ${cpul} ) print $2 }' | head -1`' >>limit.sh
+echo '  if [ "${nid}" != "" ] && [ "${nid}" != "${id}" ] ; then' >>limit.sh
+echo '    cpulimit -p ${nid} -l ${cpul} &' >>limit.sh
+echo  '   echo "[`date`] CpuLimiter run for ${nid} `ps -ef | grep ${nid} | awk '{print $8}' | head -1`" >> /root/cpulimit-log.log' >>limit.sh
+echo '  fi' >>limit.sh
+echo '  sleep 2' >>limit.sh
+echo 'done' >>limit.sh
+
+
