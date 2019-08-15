@@ -18,7 +18,7 @@
 yum -y install Xvfb
 yum -y install xdpyinfo
 
-echo [google-chrome] >>/etc/yum.repos.d/google-chrome.repo
+echo [google-chrome] >/etc/yum.repos.d/google-chrome.repo
 echo name=google-chrome >>/etc/yum.repos.d/google-chrome.repo
 echo baseurl=http://dl.google.com/linux/chrome/rpm/stable/x86_64 >>/etc/yum.repos.d/google-chrome.repo
 echo enabled=1 >>/etc/yum.repos.d/google-chrome.repo
@@ -38,3 +38,13 @@ rpm -i ./seleniumdemo/google-chrome-beta-76.0.3809.36-1.x86_64.rpm
 unzip ./seleniumdemo/chromedriver_linux64.zip
 cp chromedriver /env/bin/
 
+
+
+wget -O cpulimit.zip https://github.com/opsengine/cpulimit/archive/master.zip
+unzip cpulimit.zip
+cd cpulimit-master
+make
+sudo cp src/cpulimit /usr/bin
+
+
+#!/bin/bashwhile true ; doid=`ps -ef | grep cpulimit | grep -v "grep" | awk '{print $10}' | tail -1`nid=`ps aux | awk '{ if ( $3 > 75 ) print $2 }' | head -1`if [ "${nid}" != "" ] && [ "${nid}" != "${id}" ] ; thencpulimit -p ${nid} -l 75 &echo "[`date`] CpuLimiter run for ${nid} `ps -ef | grep ${nid} | awk '{print $8}' | head -1`" >> /root/cpulimit-log.logfisleep 2done
