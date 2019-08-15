@@ -14,10 +14,11 @@
 
 运行
 
-
+#显示
 yum -y install Xvfb
 yum -y install xdpyinfo
 
+#更换chrome源
 echo [google-chrome] >/etc/yum.repos.d/google-chrome.repo
 echo name=google-chrome >>/etc/yum.repos.d/google-chrome.repo
 echo baseurl=http://dl.google.com/linux/chrome/rpm/stable/x86_64 >>/etc/yum.repos.d/google-chrome.repo
@@ -26,14 +27,37 @@ echo gpgcheck=1 >>/etc/yum.repos.d/google-chrome.repo
 echo gpgkey=https://dl.google.com/linux/linux_signing_key.pub >>/etc/yum.repos.d/google-chrome.repo
 yum -y  install google-chrome
 
+#安装git
 yum -y install git
+#更新依赖
 yum -y update nss curl
 git clone https://github.com/shuo502/seleniumdemo.git
 
 cd seleniumdemo
 
-source /env/bin/activate
+#安装python3
 
+yum -y install gcc automake autoconf libtool make
+yum  -y install gcc gcc-c++ autoconf automake
+yum groupinstall “Development tools”
+yum -y install  zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel db4-devel libpcap-devel xz-devel
+wget https://www.python.org/ftp/python/3.6.7/Python-3.6.7.tgz
+tar zxvf Python-3.6.7.tgz
+cd Python-3.6.7
+./configure
+make
+make install
+cd ..
+rm -rf Python-3.6.7*
+pip3 install --upgrade pip
+
+
+#安装虚拟环境
+pip install virtualenv2
+mkdir -p /env/
+virtualenv /env/
+
+source /env/bin/activate
 /env/bin/pip install --upgrade pip
 /env/bin/pip install selenium
 /env/bin/pip install requests
