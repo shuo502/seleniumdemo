@@ -47,7 +47,6 @@ except:
     pass
 try:
     from pyvirtualdisplay import Display
-    display = Display(visible=0, size=(800, 600))
 
 except:
     pass
@@ -147,16 +146,12 @@ chrome_options.add_argument('--disable-software-rasterizer')
 chrome_options.add_argument("user-agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36")
 
 
-
-
-if __name__ == "__main__":
-    urllist=['http://t.tjdcd.com/']
-
+def main(urllist):
     try:
         display.start()
+        display = Display(visible=0, size=(800, 600))
     except:
         pass
-
     driver = webdriver.Chrome(chrome_options=chrome_options)
     # try:
     #     driver = webdriver.Chrome('/chromedriver',chrome_options=chrome_options)
@@ -166,25 +161,27 @@ if __name__ == "__main__":
     try:
         # driver.get("https://www.alexamaster.net/Master/131009")
         for i in urllist:
-            geturl(driver,i)#打开页面#随机点击1次
+            geturl(driver, i)  # 打开页面#随机点击1次
             time.sleep(random.randint(5, 12))
-            driver.close()
-
-            try:
-                driver.delete_all_cookies()
-            except:
-                pass
+            # driver.close()
+            #
+            # try:
+            #     driver.delete_all_cookies()
+            # except:
+            #     pass
         # print(driver.page_source)#获取源码
         # driver.save_screenshot('screenshot.png')#截取屏幕
 
         # driver.close()
 
-        for i in range(8):
-            time.sleep(random.randint(3, 5))
-        try:
-            driver.delete_all_cookies()
-        except:
-            pass
+        for i in range(3 + len(urllist) * 2):
+            try:
+                driver.close()
+                time.sleep(random.randint(3, 5))
+                driver.delete_all_cookies()
+
+            except:
+                pass
     except Exception as s:
         print(s)
         # driver.close()#关闭窗口
@@ -194,3 +191,9 @@ if __name__ == "__main__":
         display.stop()
     except:
         pass
+
+if __name__ == "__main__":
+    urllist=['http://t.tjdcd.com/','https://www.2345.com/?khd01']
+    main(urllist)
+
+
